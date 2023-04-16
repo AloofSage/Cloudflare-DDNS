@@ -20,7 +20,6 @@ _Adapted from [fire1ce/DDNS-Cloudflare-PowerShell](https://github.com/fire1ce/DD
 
 To create a CloudFlare API token for your DNS zone go to [https://dash.cloudflare.com/profile/api-tokens][cloudflare-api-token-url] and follow these steps:
 
-_Token:_
 1. Click Create Token
 2. Select Create Custom Token
 3. Provide the token a name, for example, `example.com-dns-zone-readonly`
