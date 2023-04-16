@@ -35,7 +35,7 @@ $DEFAULT_zone_api_token = "AN EDIT AND READ TOKEN HERE"
 ###--------ip (if ip_source==IpSource::explicit) - string
 ###----used if present (otherwise not changed):
 ###--------proxied - boolean
-###--------ttl - integer (1 is AUTO)
+###--------ttl - integer (1 is AUTO or 120-7200 otherwise)
 ###--------zone_id & zone_api_token override DEFAULT if present - string 
 ###-----------------------------------------------
 $domains += (@{
@@ -44,11 +44,16 @@ $domains += (@{
 })
 $domains += (@{
     name = "sub1.example.com";
-    ip_source = [IpSource]::wan;
+    ip_source = [IpSource]::lan;
 })
 $domains += (@{
     name = "sub2.example.com";
-    ip_source = [IpSource]::wan;
+    ip_source = [IpSource]::tailscale;
+})
+$domains += (@{
+    name = "sub3.example.com";
+    ip_source = [IpSource]::explicit;
+    ip = "255.255.255.255"
 })
 
 
@@ -63,7 +68,7 @@ $domains += (@{
 <#COPY THIS FOR MORE OPTIONS. OK TO REMOVE UNNEEDED FIELDS
 $domains += (@{
     name = "sub2.example.com";
-    ip_source = [IpSource]::wan;
+    ip_source = [IpSource]::lan;
     ip = "";
     proxied = $True;
     ttl = 1;
