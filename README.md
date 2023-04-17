@@ -6,6 +6,7 @@
 _Adapted from [fire1ce/DDNS-Cloudflare-PowerShell](https://github.com/fire1ce/DDNS-Cloudflare-PowerShell)_
 
 - DDNS Cloudflare PowerShell script for **Windows**.
+- Update multiple subdomains, and even multiple zones, at once 
 - Choose an IP source address from **wan**, **lan**, **tailscale** or **explicit**.
 - Set other options like ttl and proxied
 - Will create new records if they don't already exist
@@ -14,7 +15,7 @@ _Adapted from [fire1ce/DDNS-Cloudflare-PowerShell](https://github.com/fire1ce/DD
 
 - Cloudflare [api-token](https://dash.cloudflare.com/profile/api-tokens) with ZONE-DNS-EDIT and ZONE-DNS-READ Permissions
 - Tailscale CLI in your path (only needed if you want to use Tailscale)
-- Enabled running unsigned PowerShell scripts
+- Enabled running unsigned PowerShell scripts (or copy-paste the scripts into identically named files of your own)
 
 ### Creating Cloudflare API Token and Zone ID
 
@@ -22,7 +23,7 @@ To create a CloudFlare API token for your DNS zone go to [https://dash.cloudflar
 
 1. Click Create Token
 2. Select Create Custom Token
-3. Provide the token a name, for example, `example.com-dns-zone-readonly`
+3. Provide the token a name, for example, `example.com-dns-read-edit`
 4. Grant the token the following permissions:
    - Zone - DNS - Edit
    - Zone - DNS - Read
@@ -82,7 +83,7 @@ E.g.:
         name = "sub2.example2.com";
         ip_source = [IpSource]::lan;
         zone_id = "override DEFAULT by putting different id here"
-        zone_api_token = "override DEFAULT by putting different id here"
+        zone_api_token = "override DEFAULT by putting different token here"
     })
     $domains += (@{
         name = "sub3.example.com";
