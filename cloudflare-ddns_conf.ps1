@@ -44,16 +44,20 @@ $domains += (@{
 })
 $domains += (@{
     name = "sub1.example.com";
-    ip_source = [IpSource]::lan;
+    ip_source = [IpSource]::explicit;
+    ip = "255.255.255.255";
+    proxied = $False;
+    ttl = 3000
 })
 $domains += (@{
-    name = "sub2.example.com";
-    ip_source = [IpSource]::tailscale;
+    name = "sub2.example2.com";
+    ip_source = [IpSource]::lan;
+    zone_id = "override DEFAULT by putting different id here"
+    zone_api_token = "override DEFAULT by putting different token here"
 })
 $domains += (@{
     name = "sub3.example.com";
-    ip_source = [IpSource]::explicit;
-    ip = "255.255.255.255"
+    ip_source = [IpSource]::tailscale;
 })
 
 
@@ -68,7 +72,7 @@ $domains += (@{
 <#COPY THIS FOR MORE OPTIONS. OK TO REMOVE UNNEEDED FIELDS
 $domains += (@{
     name = "sub2.example.com";
-    ip_source = [IpSource]::lan;
+    ip_source = [IpSource]::wan;
     ip = "";
     proxied = $True;
     ttl = 1;
