@@ -111,13 +111,12 @@ foreach ($domain in $domains) {
     }
         
     $response = Invoke-RestMethod @list_records_request
-    $create_new = $False
-    $needs_update = $False
     if($response.success -ne "True") {
         Write-Log "There was an error fetching record for $($domain.name)" -Severity error
         continue #foreach
     }
 
+    $create_new = $False
     if($response.result_info.count -lt 1){
         Write-Log "No record found for $($domain.name). Will create new record."
         $create_new = $True
@@ -149,6 +148,7 @@ foreach ($domain in $domains) {
     }
 
     #test if update needed AFTER body created so can use $body instead of $domain
+    $needs_update = $False
     if (!$create_new){
         if ($response.result[0].content -ne $new_ip) 
         {$needs_update = $True}
