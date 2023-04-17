@@ -36,7 +36,7 @@ To create a CloudFlare API token for your DNS zone go to [https://dash.cloudflar
 ## Installation
 
 [Download the Cloudflare-DDNS zip file](https://github.com/AloofSage/Cloudflare-DDNS/archive/refs/heads/master.zip) & Unzip.
-Rename the folder and move to a place your choosing.
+Rename the folder and move to a place of your choosing.
 
 ## Config Parameters
 
@@ -79,7 +79,7 @@ E.g.:
         ttl = 3000
     })
     $domains += (@{
-        name = "sub2.example.com";
+        name = "sub2.example2.com";
         ip_source = [IpSource]::lan;
         zone_id = "override DEFAULT by putting different id here"
         zone_api_token = "override DEFAULT by putting different id here"
@@ -130,7 +130,7 @@ Run at boot with 1 min delay and repeat every 10 min
 ## Logs
 
 This Script will create a log file with **only** the last run information  
-Log file will be located as same directory.
+Log file will be located in same directory.
 
 ## Limitations
 
